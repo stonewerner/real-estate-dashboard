@@ -107,9 +107,29 @@ export default function Dashboard() {
 
         <div className="p-6">
           <div className="mb-6 flex items-center gap-4">
-            <Button className="gap-2">
+            <Button
+              className="gap-2"
+              onClick={async () => {
+                try {
+                  const response = await fetch("/api/scrape", {
+                    method: "GET",
+                  });
+
+                  if (!response.ok) {
+                    throw new Error("Failed to start scraping");
+                  }
+
+                  const data = await response.json();
+                  console.log("Scraping started:", data);
+                  // TODO: Add user feedback (toast notification, etc.)
+                } catch (error) {
+                  console.error("Error starting scrape:", error);
+                  // TODO: Add error feedback
+                }
+              }}
+            >
               <Plus className="h-4 w-4" />
-              Add Listing
+              Scrape New Properties
             </Button>
           </div>
 
