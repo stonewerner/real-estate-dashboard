@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    //EDIT: actually need a salesforce developer account and need to use their REST api
     // TODO: Implement actual scraping logic
     // go to adam's website and log in, return all the data
     // look into that starred github repo for scraping maybe
